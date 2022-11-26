@@ -1,0 +1,16 @@
+# How to find U
+        #print(str(a))
+        #if remainder != 1:
+        #    print("This number is composite " + str(remainder))
+        #else:
+        #    print("it is prime "+ str(remainder))
+
+def SquareMul(x, y):
+    exp = bin(y)
+    value = x
+
+    for i in range(3, len(exp)):
+        value = value * value
+        if(exp[i:i+1]=='1'):
+            value = value*x
+    return value
