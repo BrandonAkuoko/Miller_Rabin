@@ -42,16 +42,21 @@ def millerRabin(pc):
     j = 1
     likePrime = 0
     composite = 0
+    uandr = findUR(pc) # this sends your prime canidate over to a helper function to generate the u and the r
+    u = uandr[0]
+    r = uandr[1]
     for i in range(4): # have 10 be our security parameter
         a = random.randrange(2,pc-2)
         # remainder = (a**(pc-1)) % pc # this will get the remainder which will be used to check conditions 
-        uandr = findUR(pc) # this sends your prime canidate over to a helper function to generate the u and the r
-        u = uandr[0]
-        r = uandr[1]
-        z = (a**r) % pc # 
+    #   uandr = findUR(pc) # this sends your prime canidate over to a helper function to generate the u and the r
+    #   u  = uandr[0]
+    #   r = uandr[1]
+        #z = (a**r) % pc # 
+        z = pow(a,r,pc)
         if z != 1 and z != pc-1:
             for j in range(u-1):
-                z = fast_power(z,2,pc)
+                #z = fast_power(z,2,pc)
+                z = (z*z) % pc
                 if z == 1:
                     composite +=1
                     print("here")
